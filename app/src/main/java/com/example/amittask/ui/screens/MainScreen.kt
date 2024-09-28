@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,12 +28,20 @@ fun MainScreen(modifier: Modifier,viewModel: MainScreenViewModel = hiltViewModel
 
 
     LazyColumn(
-        modifier = modifier.fillMaxWidth().padding(22.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(22.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         items(posts){
-            Card(modifier = Modifier.padding(vertical = 10.dp).fillMaxWidth()) {
+            Card(
+                modifier = Modifier
+                    .padding(vertical = 10.dp)
+                    .fillMaxWidth(),
+                elevation =CardDefaults.cardElevation(12.dp),
+                colors = CardDefaults.cardColors(Color(0xffb3cde0))
+            ) {
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = it.title,
